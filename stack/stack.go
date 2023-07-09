@@ -1,5 +1,7 @@
 package stack
 
+import "math"
+
 type Node struct {
 	value any
 	prev  *Node
@@ -20,6 +22,16 @@ func (s *Stack) Posh(val any) {
 	head := s.Head
 	s.Head = &node
 	s.Head.prev = head
+}
+
+func (s *Stack) Pop() {
+	s.Length = int(math.Max(0, float64(s.Length-1)))
+	if s.Length == 0 {
+		s.Head = nil
+	} else {
+		head := s.Head
+		s.Head = head.prev
+	}
 }
 
 func (s *Stack) Peek() any {

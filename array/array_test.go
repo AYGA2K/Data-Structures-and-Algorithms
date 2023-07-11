@@ -56,3 +56,16 @@ func TestTwoCrystalBalls(t *testing.T) {
 	}
 
 }
+
+func TestQuickSort(t *testing.T) {
+	arr := []int{1, 5, 2, 7, 3, 4}
+	QuickSort(arr)
+	got := arr
+	fmt.Println("testing QuickSort...")
+	want := []int{1, 2, 3, 4, 5, 7}
+	if !Compare(got, want) {
+		t.Errorf("got %v, wanted %v", got, want)
+	} else {
+		fmt.Println("\u2713")
+	}
+}

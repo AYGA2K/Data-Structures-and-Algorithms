@@ -33,6 +33,41 @@ func BubbleSort(haystack []int) {
 	}
 }
 
+//------------------QuickSort Start----------------//
+
+func qs(arr []int, lo int, hi int) {
+	if lo >= hi {
+		return
+	}
+
+	pivotIdx := partition(arr, lo, hi)
+	qs(arr, lo, pivotIdx-1)
+	qs(arr, pivotIdx+1, hi)
+}
+
+func partition(arr []int, lo int, hi int) int {
+	pivot := arr[hi]
+	idx := lo - 1
+	for i := lo; i < hi; i++ {
+		if arr[i] <= pivot {
+			idx++
+			temp := arr[i]
+			arr[i] = arr[idx]
+			arr[idx] = temp
+		}
+	}
+	idx++
+	arr[hi] = arr[idx]
+	arr[idx] = pivot
+	return idx
+}
+
+func QuickSort(arr []int) {
+	qs(arr, 0, len(arr)-1)
+}
+
+//------------------QuickSort End----------------//
+
 func BinarySearch(haystack []int, needle int) bool {
 	// [low,high[
 	high := len(haystack)

@@ -1,8 +1,8 @@
 package queue
 
 type Node struct {
-	value any
-	next  *Node
+	Value interface{}
+	Next  *Node
 }
 
 type Queue struct {
@@ -11,32 +11,38 @@ type Queue struct {
 	Length int
 }
 
-func (q *Queue) Enque(val any) {
-	node := Node{value: val}
+func (q *Queue) Enque(val interface{}) {
+	node := Node{Value: val}
 	q.Length++
+
 	if q.Tail == nil {
 		q.Tail = &node
 		q.Head = &node
 		return
 	}
-	q.Tail.next = &node
+
+	q.Tail.Next = &node
 	q.Tail = &node
 
 }
-func (q *Queue) Deque() any {
+
+func (q *Queue) Deque() interface{} {
 	if q.Head == nil {
 		return nil
 	}
+
 	q.Length--
 	head := q.Head
-	q.Head = head.next
+	q.Head = head.Next
 
-	return head.value
-
+	return head.Value
 }
-func (q *Queue) Peek() any {
+
+func (q *Queue) Peek() interface{} {
+
 	if q.Head != nil {
-		return q.Head.value
+		return q.Head.Value
 	}
+
 	return nil
 }

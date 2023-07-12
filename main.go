@@ -2,9 +2,12 @@ package main
 
 import (
 	"fmt"
-	"math"
+	"github.com/AYGA2K/DataStructuresAndAlgorithms/tree"
 )
 
 func main() {
-	fmt.Println(int(math.Floor(5.25)))
+	t := &tree.Node{Value: 5, Left: &tree.Node{Value: 10},
+		Right: &tree.Node{Value: 20}}
+
+	fmt.Println(tree.Bfs(t, 10))
 }

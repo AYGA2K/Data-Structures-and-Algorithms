@@ -10,4 +10,5 @@ func main() {
 		Right: &tree.Node{Value: 20}}
 
 	fmt.Println(tree.Bfs(t, 10))
+
 }
